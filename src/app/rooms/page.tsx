@@ -14,7 +14,7 @@ interface Room {
   name: string;
   image_url: string;
   price_per_night: number;
-  category?: string;
+  category: string | null;
 }
 
 export default function AllRoomsPage() {
@@ -45,7 +45,6 @@ export default function AllRoomsPage() {
     <main className="min-h-screen bg-white dark:bg-zinc-950 pt-20 sm:pt-28 pb-16 lg:pb-32">
       {/* Container مرن يتغير عرضه حسب الشاشة */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-        
         {/* رأس الصفحة - Responsive Alignment */}
         <PageHeader count={rooms.length} />
 
@@ -55,12 +54,15 @@ export default function AllRoomsPage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
             {rooms.map((room, index) => (
-              <div
+      <div
                 key={room.id}
                 className="animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-both"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <RoomCard room={room} />
+                <RoomCard room={{
+                  ...room,
+                  category: room.category || "Luxury Suite"
+                }} />
               </div>
             ))}
           </div>
@@ -83,15 +85,15 @@ function PageHeader({ count }: { count: number }) {
           The Suite Collection
         </span>
       </div>
-      
+
       {/* تحجيم الخط حسب الشاشة (Responsive Font Sizes) */}
       <h1 className="text-4xl sm:text-5xl lg:text-7xl font-serif text-zinc-900 dark:text-white mb-6 tracking-tight leading-[1.1]">
         All Luxury <span className="italic text-amber-700">Suites</span>
       </h1>
-      
+
       <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed mx-auto md:mx-0">
-        Experience the pinnacle of luxury. Each suite is a masterpiece of design, 
-        offering breathtaking views and unmatched comfort.
+        Experience the pinnacle of luxury. Each suite is a masterpiece of
+        design, offering breathtaking views and unmatched comfort.
       </p>
 
       <div className="mt-8 flex items-center justify-center md:justify-start gap-4">
@@ -108,8 +110,15 @@ function LoadingSpinner() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-zinc-950 px-6">
       <div className="relative h-16 w-16 sm:h-20 sm:w-20">
-        <Loader2 className="h-full w-full animate-spin text-amber-600/20" strokeWidth={1} />
-        <Loader2 className="h-full w-full animate-spin text-amber-600 absolute top-0 left-0" strokeWidth={1.5} style={{ animationDuration: '3s' }} />
+        <Loader2
+          className="h-full w-full animate-spin text-amber-600/20"
+          strokeWidth={1}
+        />
+        <Loader2
+          className="h-full w-full animate-spin text-amber-600 absolute top-0 left-0"
+          strokeWidth={1.5}
+          style={{ animationDuration: "3s" }}
+        />
       </div>
       <p className="mt-6 text-[10px] sm:text-sm font-medium text-amber-800 dark:text-amber-500 uppercase tracking-[0.2em] animate-pulse text-center">
         Preparing your experience...
@@ -123,7 +132,7 @@ function ErrorState({ message }: { message: string }) {
     <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
       <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
       <h2 className="text-xl font-semibold mb-4">{message}</h2>
-      <button 
+      <button
         onClick={() => window.location.reload()}
         className="px-6 py-2 bg-zinc-900 text-white rounded-full text-sm font-bold hover:bg-amber-800 transition-colors"
       >
@@ -136,7 +145,9 @@ function ErrorState({ message }: { message: string }) {
 function EmptyRoomsState() {
   return (
     <div className="text-center py-16 sm:py-24 bg-zinc-50 dark:bg-zinc-900/50 rounded-[30px] sm:rounded-[40px] border border-zinc-100 dark:border-zinc-800 px-6">
-      <h2 className="text-xl sm:text-3xl font-light text-zinc-400 mb-8">Our collection is currently being curated.</h2>
+      <h2 className="text-xl sm:text-3xl font-light text-zinc-400 mb-8">
+        Our collection is currently being curated.
+      </h2>
       <Link
         href="/"
         className="inline-flex items-center gap-2 px-8 py-4 bg-amber-800 text-white rounded-full hover:bg-amber-900 transition-all shadow-lg text-sm font-bold"
@@ -156,7 +167,9 @@ function BottomNavigation({ show }: { show: boolean }) {
         className="group inline-flex items-center gap-3 text-zinc-400 hover:text-amber-700 transition-all"
       >
         <span className="hidden sm:block h-px w-8 bg-zinc-200 group-hover:w-12 group-hover:bg-amber-700 transition-all" />
-        <span className="text-[10px] sm:text-sm font-bold uppercase tracking-widest">Return to Home</span>
+        <span className="text-[10px] sm:text-sm font-bold uppercase tracking-widest">
+          Return to Home
+        </span>
         <Sparkles className="h-4 w-4" />
       </Link>
     </footer>
