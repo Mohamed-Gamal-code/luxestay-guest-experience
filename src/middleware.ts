@@ -42,8 +42,8 @@ export async function middleware(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser()
 
-  // حماية مسار الأدمن تحديداً
-  if (request.nextUrl.pathname.startsWith('/admin/dashboard')) {
+  // التعديل هنا: حماية أي مسار بيبدأ بـ /admin
+  if (request.nextUrl.pathname.startsWith('/admin')) {
     if (!user) {
       return NextResponse.redirect(new URL('/login', request.url))
     }
@@ -65,6 +65,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // تحديد المسارات التي سيعمل عليها الـ Middleware
-  matcher: ['/admin/dashboard/:path*'],
+  // التعديل هنا: خليه يراقب أي حاجة بتبدأ بـ /admin
+  matcher: ['/admin/:path*'],
 }

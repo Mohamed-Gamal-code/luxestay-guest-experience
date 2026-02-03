@@ -1,19 +1,25 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
-        // تعليق: بنسمح لصور Unsplash تشتغل في المشروع
       },
       {
         protocol: 'https',
         hostname: 'i.pravatar.cc',
-        // تعليق: ضيفنا ده كمان عشان الصور الشخصية اللي استخدمناها في الكود
+      },
+      {
+        protocol: 'https',
+        // ده الدومين بتاع سوبابيز الخاص بيك اللي كان مطلع الخطأ
+        hostname: 'njsqnvksvmrkrgywrpqr.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/**',
       },
     ],
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

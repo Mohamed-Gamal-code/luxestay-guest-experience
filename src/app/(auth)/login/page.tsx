@@ -45,13 +45,12 @@ export default function LoginPage() {
   };
 
   return (
-    // التغيير هنا: ضفنا pt-20 عشان نعوض مكان النافبار الثابت
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#020617] pt-20">
       
       {/* الخلفية السينمائية مع طبقة تظليل */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/LoginPage.jpg" // تأكد أن الصورة دي موجودة وجودتها عالية
+          src="/images/LoginPage.jpg" 
           alt="Luxury Hotel Lobby"
           fill
           priority

@@ -18,7 +18,6 @@ export async function createClient() {
               cookieStore.set(name, value, options)
             )
           } catch {
-            // ده بيحصل لو حاولنا نعدل كوكيز من Server Component (عادي جداً)
           }
         },
       },
