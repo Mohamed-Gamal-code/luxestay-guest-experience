@@ -5,7 +5,7 @@
 
 <br />
 
-[![Live Demo](https://img.shields.io/badge/DEMO-Live_Preview-amber?style=for-the-badge&logo=vercel)](https://your-project-link.vercel.app)
+[![Live Demo](https://img.shields.io/badge/DEMO-Live_Preview-amber?style=for-the-badge&logo=vercel)](https://luxestay-guest-platform.vercel.app)
 [![Framework](https://img.shields.io/badge/Framework-Next.js_15-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![Database](https://img.shields.io/badge/Database-Supabase-emerald?style=for-the-badge&logo=supabase)](https://supabase.com)
 [![Auth](https://img.shields.io/badge/Auth-NextAuth_v5-purple?style=for-the-badge&logo=auth0)](https://authjs.dev)
