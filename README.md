@@ -26,7 +26,9 @@ Built with <b>Next.js 15 (App Router)</b>, <b>TypeScript</b>, and <b>Supabase</b
 
 ## 🚀 Live Demo
 
-🔗 **Explore the platform:** [**LuxeStay Live Experience**](https://your-project-link.vercel.app)
+  <a href="https://luxestay-guest-platform.vercel.app/">
+    <img src="https://img.shields.io/badge/Live_Demo-Visit-success?style=for-the-badge&logo=vercel" />
+  </a>
 
 ---
 
